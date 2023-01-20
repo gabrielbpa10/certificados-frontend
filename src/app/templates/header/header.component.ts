@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  urlHome!: string ;
   constructor() { }
 
   ngOnInit(): void {
+    if(environment.production){
+      this.urlHome = environment.urlHome;
+    }
   }
 
 }
