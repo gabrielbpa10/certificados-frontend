@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="col">
+        <h3 class="mt-3">Certificados Digitais</h3>
+        <hr class="border border-danger border-2 opacity-50 linha-cabecalho">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Plataforma</th>
+                <th scope="col">Url do certificado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let certificado of certificados">
+                <td>{{ certificado.titulo }}</td>
+                <td>{{ certificado.plataforma }}</td>
+                <td>{{ certificado.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+            [collectionSize]="collectionSize"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="mudarPagina()"
+        >
+        </ngb-pagination>
+    
+        <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+        </select> -->
+    </div>
+    
+</div>
+
