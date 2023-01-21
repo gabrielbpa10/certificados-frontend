@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { Certificado } from 'src/app/model/certificado';
 
 interface Country {
 	id?: number;
@@ -99,32 +100,45 @@ const COUNTRIES: Country[] = [
 })
 export class CertificadosComponent implements OnInit {
 
-  page = 1;
-	pageSize = 4;
-	collectionSize = COUNTRIES.length;
-	countries!: Country[];
-
-  items!: Observable<any[]>;
-  private firestone!: AngularFirestore
+	page = 1;
+	pageSize = 10;
+	collectionSize!: number;
+	certificados!: Certificado[];
+	firestone!: AngularFirestore
 
   constructor(firestone: AngularFirestore) {
-    firestone.collection('certificados').valueChanges().forEach(value =>console.log(value));
-    this.refreshCountries();
-   }
-
-  ngOnInit(): void {
+	this.firestone = firestone;
+	this.iniciarDados();
   }
 
-  async pesquisarCertificado() {
-    this.firestone.collection('certificados', ref => ref.where("nome", "==", "Spring Boot").limit(10)).valueChanges().forEach(
-      value => console.log(value)
-    );
+  async ngOnInit(): Promise<void> {
   }
 
-  refreshCountries() {
-		this.countries = COUNTRIES.map((country, i) => ({ id: i + 1, ...country })).slice(
+  async iniciarDados() {
+	this.firestone.collection('certificados').valueChanges().forEach((data: any) => {
+		this.collectionSize = data.length;
+		this.certificados = data.map((certificado: any, i: number) => ({ id: i + 1, ...certificado })).slice(
 			(this.page - 1) * this.pageSize,
 			(this.page - 1) * this.pageSize + this.pageSize,
 		);
+	});
+	
+  }
+
+  async pesquisarCertificado() {
+    this.firestone.collection('certificados', 
+		ref => ref.where("titulo", "==", "Spring Boot")
+		).valueChanges().forEach(
+      	value => console.log(value)
+    );
+  }
+
+  mudarPagina() {
+	this.firestone.collection('certificados').valueChanges().forEach((data: any) => {
+		this.certificados = data.map((certificado: any, i: number) => ({ id: i + 1, ...certificado })).slice(
+			(this.page - 1) * this.pageSize,
+			(this.page - 1) * this.pageSize + this.pageSize,
+		);
+	});
 	}
 }

@@ -6,25 +6,16 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Country</th>
-                <th scope="col">Area</th>
-                <th scope="col">Population</th>
+                <th scope="col">Título</th>
+                <th scope="col">Plataforma</th>
+                <th scope="col">Url do certificado</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let country of countries">
-                <th scope="row">{{ country.id }}</th>
-                <td>
-                    <img
-                        [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag"
-                        class="me-2"
-                        style="width: 20px"
-                    />
-                    {{ country.name }}
-                </td>
-                <td>{{ country.area | number}}</td>
-                <td>{{ country.population | number }}</td>
+            <tr *ngFor="let certificado of certificados">
+                <td>{{ certificado.titulo }}</td>
+                <td>{{ certificado.plataforma }}</td>
+                <td>{{ certificado.url }}</td>
             </tr>
         </tbody>
     </table>
@@ -34,7 +25,7 @@
             [collectionSize]="collectionSize"
             [(page)]="page"
             [pageSize]="pageSize"
-            (pageChange)="refreshCountries()"
+            (pageChange)="mudarPagina()"
         >
         </ngb-pagination>
     
