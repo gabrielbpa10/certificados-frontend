@@ -8,15 +8,13 @@
             <tr>
                 <th scope="col">Título</th>
                 <th scope="col">Plataforma</th>
-                <th scope="col">Url do certificado</th>
-                <th scope="col"></th>
+                <th scope="col">Acesso do certificado</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let certificado of certificados">
                 <td>{{ certificado.titulo }}</td>
                 <td>{{ certificado.plataforma }}</td>
-                <td>{{ certificado.url }}</td>
                 <td><a href="{{ certificado.url }}" class="" target="_blank" title="Acessar link">
                     <img src="/assets/link.png">
                 </a></td>
@@ -32,12 +30,6 @@
             (pageChange)="mudarPagina()"
         >
         </ngb-pagination>
-    
-        <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-            <option [ngValue]="2">2 items per page</option>
-            <option [ngValue]="4">4 items per page</option>
-            <option [ngValue]="6">6 items per page</option>
-        </select> -->
     </div>
     
 </div>
