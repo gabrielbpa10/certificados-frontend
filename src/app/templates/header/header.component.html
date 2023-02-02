@@ -1,14 +1,27 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <a [href]="urlHome" class="navbar-brand text-light d-none d-sm-block">Home</a>
-      <div class="col mb-2 d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block d-xl-none">
-        <a [href]="urlHome" class="navbar-brand">
-        <img src="/assets/home.png" />
+      <a [href]="urlHome" class="navbar-brand text-light d-none d-sm-block">
+        <img src="/assets/foguete.png" width="30" height="30" class="imagem-foguete" />
+        <span class="titulo-nome">Dev. Gabriel Araújo</span>
       </a>
+      <div class="row">
+      <div class="col-2 mb-2 d-sm-none d-md-block d-md-none d-lg-block d-lg-none d-xl-block d-xl-none">
+        <a [href]="urlHome" class="navbar-brand">
+          <img src="/assets/foguete.png" width="30" height="30" />
+        </a>
       </div>
+      <div class="col-10 pesquisar-titulo-mobile">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar certificado ..." aria-label="Buscar">
+          <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        </form>
+      </div>
+    </div>
+    <div class="pesquisar-titulo-desktop">
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar certificado ..." aria-label="Buscar">
+        <input class="form-control me-2" type="search" placeholder="Buscar certificado por título ..." aria-label="Buscar">
         <button class="btn btn-outline-success" type="submit">Pesquisar</button>
       </form>
+    </div>
     </div>
   </nav>

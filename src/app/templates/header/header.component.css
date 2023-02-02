@@ -1,3 +1,20 @@
 .navbar {
     background-color: #cbe65b;
 }
+
+.pesquisar-titulo-mobile {
+    display: none;
+}
+
+.pesquisar-titulo-desktop {
+    display: inline-block;
+}
+
+@media screen and (max-width: 900px) {
+    .pesquisar-titulo-mobile {
+        display: inline-block;
+    }
+    .pesquisar-titulo-desktop {
+        display: none;
+    }
+}
