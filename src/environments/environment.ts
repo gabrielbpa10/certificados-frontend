@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   urlHome: 'file:///home/gabriel/Documentos/site-pessoal-desenvolvedor/index.html',
+  urlCertificados: 'http://localhost:8080/portifolio',
   firebase: {
     apiKey: "AIzaSyC12uOElCqGL0oaMGq0bjTGjt_GkSQ_nmE",
   authDomain: "certificados-portifolio-fc277.firebaseapp.com",
@@ -13,7 +14,19 @@ export const environment = {
   messagingSenderId: "581826480966",
   appId: "1:581826480966:web:ca21775d168dbca449b347",
   measurementId: "G-BKF0MXWVBN"
-  }
+  },
+
+
+  // CONFIGURACOES DO FIREBASE STORAGE
+//   firebaseConfig : {
+//   apiKey: "AIzaSyDYBLbdvohImpGUQc_Lq_XgL6qFBF6hiYk",
+//   authDomain: "portifolio-8d184.firebaseapp.com",
+//   projectId: "portifolio-8d184",
+//   storageBucket: "portifolio-8d184.firebasestorage.app",
+//   messagingSenderId: "2930356062",
+//   appId: "1:2930356062:web:b2db088cbb54b5da3729cf",
+//   measurementId: "G-PRP2TCZEC6"
+// };
 };
 
 /*

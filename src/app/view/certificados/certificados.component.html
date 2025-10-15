@@ -1,37 +1,59 @@
 <div class="container">
-    <div class="col">
-        <h3 class="mt-3">Certificados Digitais</h3>
-        <hr class="border border-danger border-2 opacity-50 linha-cabecalho">
+    <div class="col" id="sobre">
+        <h4 class="mt-3">Sobre</h4>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
+        <img src="/assets/perfil.png" class="img-foto-perfil col-2" alt="Foto de perfil" width="170" height="170">
+        <p class="p-texto col-8">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde, voluptates perferendis esse
+            accusamus quidem facilis rerum, iste nulla qui, cupiditate laudantium odit itaque corrupti expedita eius.
+            Possimus, sed corporis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde, voluptates perferendis esse
+            accusamus quidem facilis rerum, iste nulla qui, cupiditate laudantium odit itaque corrupti expedita eius.
+            Possimus, sed corporis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde, voluptates perferendis esse
+            accusamus quidem facilis rerum, iste nulla qui, cupiditate laudantium odit itaque corrupti expedita eius.
+            Possimus, sed corporis!
+        </p>
+        <p class="p-texto col-12">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde, voluptates perferendis esse
+            accusamus quidem facilis rerum, iste nulla qui, cupiditate laudantium odit itaque corrupti expedita eius.
+            Possimus, sed corporis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde, voluptates perferendis esse
+            accusamus quidem facilis rerum, iste nulla qui, cupiditate laudantium odit itaque corrupti expedita eius.
+            Possimus, sed corporis!
+        </p>
+    </div>
+    <div class="col" id="certificados">
+        <h4 class="mt-3">Certificados</h4>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
     </div>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Título</th>
-                <th scope="col">Plataforma</th>
-                <th scope="col">Acesso do certificado</th>
+                <th scope="col">Emitido por</th>
+                <th scope="col">Download do certificado</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let certificado of certificados">
                 <td>{{ certificado.titulo }}</td>
                 <td>{{ certificado.plataforma }}</td>
-                <td><a href="{{ certificado.url }}" class="" target="_blank" title="Acessar link">
-                    <img src="/assets/link.png">
-                </a></td>
+                <td><a (click)="baixarCertificado(certificado.id)" class="" title="Baixar certificado">
+                        <img src="/assets/download.png">
+                    </a></td>
             </tr>
         </tbody>
     </table>
-    
+
     <div class="d-flex justify-content-between p-2">
-        <ngb-pagination
-            [collectionSize]="collectionSize"
-            [(page)]="page"
-            [pageSize]="pageSize"
-            (pageChange)="mudarPagina()"
-            class="paginacao"
-        >
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+            (pageChange)="mudarPagina()" class="paginacao">
         </ngb-pagination>
     </div>
-    
-</div>
 
+    <div class="col" id="contatos">
+        <h4 class="mt-3">Contatos</h4>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
+    </div>
+</div>
