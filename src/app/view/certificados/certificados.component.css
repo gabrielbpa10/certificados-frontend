@@ -18,3 +18,23 @@
     text-align: justify;
     display:inline-block; margin-left:10px; vertical-align:middle;
 }
+
+.div-informacao li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.div-informacao span {
+    padding: 1rem;
+}
+
+::ng-deep .paginacao .page-item .page-link {
+    border-color: #191919;
+    color: white;
+}
+
+::ng-deep .paginacao .page-item.active .page-link {
+  background-color: #525151;
+  color: white;
+}
