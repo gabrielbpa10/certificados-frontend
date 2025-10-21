@@ -66,13 +66,25 @@ export class CertificadosComponent implements OnInit {
 	}
 	
 	baixarCertificado(id: number) {
+		this.showLoading();
 		this.certificadosService.downloadCertificadoById(100).subscribe({
 			next: (data) => {
 				const blob = new Blob([data], { type: 'application/pdf' });
 				const url = window.URL.createObjectURL(blob);
+				this.hideLoading();
 				window.open(url);
 			},
 			error: (e) => console.error(e)	
 		});
+	}
+
+	showLoading() {
+		const loadingContainer = document.querySelector('.loading-container') as HTMLElement;
+		loadingContainer.style.display = 'flex';
+	}
+
+	hideLoading() {
+		const loadingContainer = document.querySelector('.loading-container') as HTMLElement;
+		loadingContainer.style.display = 'none';
 	}
 }
