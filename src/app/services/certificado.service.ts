@@ -14,8 +14,8 @@ export class CertificadoService {
 
   constructor(private http: HttpClient) { }
 
-  getCertificados(): Observable<Listagem<Certificado>> {
-    return this.http.get<Listagem<Certificado>>(`${this.apiUrl}/listar?pagina=0&tamanho=10`);
+  getCertificados(pagina: number): Observable<Listagem<Certificado>> {
+    return this.http.get<Listagem<Certificado>>(`${this.apiUrl}/listar?pagina=${pagina}&tamanho=5`);
   }
 
   downloadCertificadoById(id: number): Observable<Blob> {

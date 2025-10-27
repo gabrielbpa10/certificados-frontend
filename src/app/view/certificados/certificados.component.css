@@ -16,7 +16,9 @@
 .p-texto {
     margin-top: 1rem;
     text-align: justify;
-    display:inline-block; margin-left:10px; vertical-align:middle;
+    display:inline-block; 
+    margin-left:10px; 
+    vertical-align:middle;
 }
 
 .div-informacao li {
@@ -31,7 +33,7 @@
 
 ::ng-deep .paginacao .page-item .page-link {
     border-color: #191919;
-    color: white;
+    color: #191919;
 }
 
 ::ng-deep .paginacao .page-item.active .page-link {
@@ -56,4 +58,17 @@
   align-items: center;
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 1050;
+}
+
+@media (max-width: 768px) {
+    .img-foto-perfil {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 2%;
+    }
+
+    .p-texto {
+        font-size: 14px;
+        margin-left: 0px;
+    }
 }

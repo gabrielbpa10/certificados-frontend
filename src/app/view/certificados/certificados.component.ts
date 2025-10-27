@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Certificado } from 'src/app/model/certificado';
 import { CertificadoService } from 'src/app/services/certificado.service';
 
@@ -10,64 +9,40 @@ import { CertificadoService } from 'src/app/services/certificado.service';
 })
 export class CertificadosComponent implements OnInit {
 
-	page = 1;
-	pageSize = 10;
+	page: number = 0;
+	pageSize!: number;
 	collectionSize!: number;
 	certificados!: Certificado[];
-	firestone!: AngularFirestore;
 	certificadosService!: CertificadoService;
 
-  constructor(firestone: AngularFirestore, certificadoService: CertificadoService) {
-	this.firestone = firestone;
+  constructor(certificadoService: CertificadoService) {
 	this.certificadosService = certificadoService;
-	// this.iniciarDados();
-	this.inciarDadosV2();
+	
   }
 
   async ngOnInit(): Promise<void> {
-  }
-
-  async iniciarDados() {
-	this.firestone.collection('certificados').valueChanges().forEach((data: any) => {
-		this.collectionSize = data.length;
-		this.certificados = data.map((certificado: any, i: number) => ({ id: i + 1, ...certificado })).slice(
-			(this.page - 1) * this.pageSize,
-			(this.page - 1) * this.pageSize + this.pageSize,
-		);
-	});
-  }
-
-  async inciarDadosV2() {
-	this.certificadosService.getCertificados().subscribe({
-		next: (data) => {
-			this.collectionSize = data.totalRegistros;
-			this.certificados = data.itens;
-			this.pageSize = data.totalPaginas;
-			this.page = data.paginaAtual;
-		},
-		error: (e) => console.error(e)	
-	});
+	await this.carregarPagina(1);
  }
-  async pesquisarCertificado() {
-    this.firestone.collection('certificados', 
-		ref => ref.where("titulo", "==", "Spring Boot")
-		).valueChanges().forEach(
-      	value => console.log(value)
-    );
-  }
 
-  mudarPagina() {
-	this.firestone.collection('certificados').valueChanges().forEach((data: any) => {
-		this.certificados = data.map((certificado: any, i: number) => ({ id: i + 1, ...certificado })).slice(
-			(this.page - 1) * this.pageSize,
-			(this.page - 1) * this.pageSize + this.pageSize,
-		);
-	});
-	}
+ async carregarPagina(pagina: number) {
+  this.page = pagina;
+  this.certificadosService.getCertificados(pagina-1).subscribe({
+    next: (data) => {
+	  this.collectionSize = (data.totalRegistros/5);
+      this.certificados = data.itens;
+      this.pageSize = data.totalPaginas;
+    },
+    error: (e) => console.error(e)
+  });
+}
+
+  mudarPagina(pagina: number) {
+	this.carregarPagina(pagina);
+  }
 	
 	baixarCertificado(id: number) {
 		this.showLoading();
-		this.certificadosService.downloadCertificadoById(100).subscribe({
+		this.certificadosService.downloadCertificadoById(id).subscribe({
 			next: (data) => {
 				const blob = new Blob([data], { type: 'application/pdf' });
 				const url = window.URL.createObjectURL(blob);
