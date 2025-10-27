@@ -10,11 +10,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment.prod';
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './templates/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CertificadosComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { environment } from 'src/environments/environment.prod';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

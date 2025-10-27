@@ -1,7 +1,74 @@
 .linha-cabecalho {
-    border-color: #cbe65b !important;
+    border-color: #191919 !important;
+    height: 0.1px;
 }
 
 .pagination {
     background-color: #cbe65b !important;
+}
+
+.img-foto-perfil {
+    border-radius: 50%;
+    margin-top: 1rem;
+    vertical-align:middle;
+}
+
+.p-texto {
+    margin-top: 1rem;
+    text-align: justify;
+    display:inline-block; 
+    margin-left:10px; 
+    vertical-align:middle;
+}
+
+.div-informacao li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.div-informacao span {
+    padding: 1rem;
+}
+
+::ng-deep .paginacao .page-item .page-link {
+    border-color: #191919;
+    color: #191919;
+}
+
+::ng-deep .paginacao .page-item.active .page-link {
+  background-color: #525151;
+  color: white;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1050;
+}
+
+@media (max-width: 768px) {
+    .img-foto-perfil {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 2%;
+    }
+
+    .p-texto {
+        font-size: 14px;
+        margin-left: 0px;
+    }
 }

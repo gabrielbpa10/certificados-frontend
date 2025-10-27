@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+span {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

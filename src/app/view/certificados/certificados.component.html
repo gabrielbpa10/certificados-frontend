@@ -1,37 +1,73 @@
 <div class="container">
-    <div class="col">
-        <h3 class="mt-3">Certificados Digitais</h3>
-        <hr class="border border-danger border-2 opacity-50 linha-cabecalho">
+    <div class="col" id="sobre">
+        <h4 class="mt-3">Sobre</h4>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
+        <div class="text-center text-md-start">
+            <img src="/assets/perfil.png" class="img-foto-perfil col-12 col-md-2" alt="Foto de perfil" width="170" height="170">
+            <p class="p-texto col-12 col-md-8">
+            Olá, seja bem vindo(a) ao meu site. Me chamo Gabriel Araújo, sou Analista e Desenvolvedor de
+            Sistemas. Aqui você encontrará meus certificados de cursos realizados, além de outras informações
+            relevantes sobre minha carreira profissional.
+            Sinta-se à vontade para explorar e conhecer mais sobre minhas habilidades e experiências.
+            Graduado em Ciência da Computação pela Universidade de Fortaleza (Unifor) e atualmente estou na pós-graduação em Engenharia de Software pela USP Esalq, 
+            possuo sólida formação acadêmica e experiência prática em desenvolvimento de software. 
+            
+        </p>
+        </div>
+        
+        <p class="p-texto col-12 col-md-12">
+            Trabalho no Departamento de Tecnologia da Unifor (Dtec), 
+            onde aplico meus conhecimentos para criar soluções eficientes e inovadoras.
+            Já participei de projetos desafiadores que me permitiram aprimorar minhas habilidades técnicas e de trabalho em equipe.
+            Os projetos que trabalhei incluem área de negociórios como, gestão acadêmica, 
+            gestão de biblioteca, sistema de planejamento, integrações com sistemas externos,
+            financeiro, entre outros.
+            As Tecnologias que domino: HTML, CSS, JavaScript, Spring Boot, Quarkus, 
+            Python, Angular, Kotlin, jQuery, PLSQL Oracle, Docker, Rabbitmq, Scrum, Kanban.
+        </p>
+    </div>
+    <div class="col" id="certificados">
+        <h4 class="mt-3">Certificados</h4>
+    <div class="loading-container">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
     </div>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Título</th>
-                <th scope="col">Plataforma</th>
-                <th scope="col">Acesso do certificado</th>
+                <th scope="col">Emitido por</th>
+                <th scope="col">Download do certificado</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let certificado of certificados">
                 <td>{{ certificado.titulo }}</td>
                 <td>{{ certificado.plataforma }}</td>
-                <td><a href="{{ certificado.url }}" class="" target="_blank" title="Acessar link">
-                    <img src="/assets/link.png">
-                </a></td>
+                <td><a routerLink="" (click)="baixarCertificado(certificado.id)" class="" title="Baixar certificado">
+                        <img src="/assets/download.png">
+                    </a></td>
             </tr>
         </tbody>
     </table>
-    
+
     <div class="d-flex justify-content-between p-2">
-        <ngb-pagination
-            [collectionSize]="collectionSize"
-            [(page)]="page"
-            [pageSize]="pageSize"
-            (pageChange)="mudarPagina()"
-            class="paginacao"
-        >
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+            (pageChange)="mudarPagina($event)" class="paginacao">
         </ngb-pagination>
     </div>
-    
-</div>
 
+    <div class="col" id="informacao" class="div-informacao">
+        <h4 class="mt-3">Mais informações</h4>
+        <hr class="border border-danger border-1 opacity-50 linha-cabecalho">
+        <ul>
+            <li><img src="/assets/gmail.png" width="30" height="30" alt="Email"> <span>gabrielaraujoprofissionalti@gmail.com</span></li>
+            <li><img src="/assets/resume.png" width="30" height="30" alt="Lattes"> <span>lattes.cnpq.br/4447824420476789</span></li>
+            <li><img src="/assets/linkedin.png" width="30" height="30" alt="LinkedIn"> <span>linkedin.com/in/gabriel-araujo-analist</span></li>
+            <li><img src="/assets/github.png" width="30" height="30" alt="GitHub"> <span>github.com/gabrielbpa10</span></li>
+        </ul>
+    </div>
+</div>

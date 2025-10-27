@@ -1,9 +1,9 @@
 .navbar {
-    background-color: #cbe65b;
+    background-color: #191919;
 }
 
-.pesquisar-titulo-mobile {
-    display: none;
+.titulo-nome {
+    padding-left: 2rem;
 }
 
 .pesquisar-titulo-desktop {
