@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlHome: 'file:///home/gabriel/Documentos/site-pessoal-desenvolvedor/index.html',
-  urlCertificados: 'http://localhost:8080/portifolio',
+  urlCertificados: 'https://portifolio-backend-bufggcdcdfcefyez.brazilsouth-01.azurewebsites.net/portifolio',
   firebase: {
     apiKey: "AIzaSyC12uOElCqGL0oaMGq0bjTGjt_GkSQ_nmE",
     authDomain: "certificados-portifolio-fc277.firebaseapp.com",
